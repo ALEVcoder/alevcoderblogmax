@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                {% if object.photo %}
+                    <img style="min-width: 500px; max-width: 100%" class="card-img-top img-fluid" src="{{ object.photo.url }}" alt="alevcoder">
+                {% endif %}
+                <h1 class="card-title">{{ object.title }}</h1>
+                <h6 class="card-subtitle mb-2 text-muted">
+                    Muallif: {{ object.author }} | {{ object.date }}
+                </h6>
+                <p class="card-text">{{ object.body | safe }}</p>
+                <a href="{% url 'post_edit' post.pk %}" class="btn btn-success">Tahrirlash</a>
+                <a href="{% url 'post_delete' post.pk %}" class="btn btn-danger">O`chirish</a>
+                <a href="{% url 'post_list' %}" class="btn btn-primary">Barcha Postlar</a>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

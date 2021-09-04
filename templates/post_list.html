@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %} Postlar {% endblock title %}
+
+{% block content %}
+    {% for post in object_list %}
+        <div class="card">
+            <div class="card-header">
+                <span class="font-weight-bold">
+                    <a href="{% url 'post_detail' post.pk %}" style="text-decoration: none;">
+                        <h2>{{ post.title }}</h2>
+                    </a>
+                </span>
+            </div>
+            {% if post.photo %}
+                <img style="min-width: 500px; max-width: 100%" src="{{ post.photo.url }}" alt="alevcoder" class="card-img-top img-fluid">
+            {% endif %}
+            <div class="card-body">
+                {{ post.summary }}... 
+                <a href="{% url 'post_detail' post.pk %}">batafsil</a>
+            </div>
+            <div class="card-footer text-left text-muted">
+                <span class="text-muted">
+                    muallif {{ post.author | title }} {{ post.date }}
+                </span>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock content %}
